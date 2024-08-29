@@ -18,7 +18,7 @@ market_array.each_with_index do |low_stock, low_index|
   market_array.each_with_index do |high_stock, high_index|
     profit = high_stock - low_stock
 
-    if profit > maxprofit &&  market_array.find_index(low_stock) < market_array.find_index(high_stock)
+    if profit > maxprofit &&  low_index < high_index
       lowest_stock = low_stock
       highest_stock = high_stock
       lowest_stock_index = low_index
