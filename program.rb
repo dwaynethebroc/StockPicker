@@ -1,25 +1,40 @@
 def stock_picker(market_array) 
-  lowest_stock = market_array[0]
-  highest_stock = market_array[0]
+  lowest_stock = 0
+  highest_stock = 0
   stock_positions = []
   lowest_stock_index = 0
   highest_stock_index = 0
   profit = 0
+  maxprofit = 0
 
 
-  market_array.each_with_index do |stock, index|
-    if stock < lowest_stock
-      lowest_stock = stock
-      lowest_stock_index = index
+#create 2 loops that iterate through the market_array
+#calculate profit for every combination
+#if profit is greater than current max profit
+#save positions of high and low stock and values
+#after loops have finished push high and low stock positions to array
+#return array and print profit calculation and max profit
+
+market_array.each_with_index do |low_stock, low_index|
+  market_array.each_with_index do |high_stock, high_index|
+    profit = high_stock - low_stock
+
+    if profit > maxprofit &&  market_array.find_index(low_stock) < market_array.find_index(high_stock)
+      lowest_stock = low_stock
+      highest_stock = high_stock
+      lowest_stock_index = low_index
+      highest_stock_index = high_index
+      maxprofit = profit
     end
   end
+end
+
+
 
   stock_positions.push(lowest_stock_index)
   stock_positions.push(highest_stock_index)
 
-  profit = highest_stock - lowest_stock
-
-  puts " for a profit of $#{highest_stock} - $#{lowest_stock} == $#{profit}"
+  puts "for a profit of $#{highest_stock} - $#{lowest_stock} == $#{maxprofit}"
   return stock_positions
 end
 
