@@ -4,7 +4,6 @@ def stock_picker(market_array)
   stock_positions = []
   lowest_stock_index = 0
   highest_stock_index = 0
-  profit = 0
   maxprofit = 0
 
 
